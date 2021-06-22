@@ -12,3 +12,6 @@ Console application written in C to read from any file, count the number of occu
 - bible.txt - the input file. The entire bible as a text file.
 - output.txt - the output file. Contains each word in the bible, how many times it occured, the total number of words, and the total number of unique words.
 - output_hash_table.txt - an output file containing the hash table representation in memory as well as a summary of its performance at the bottom of the file.
+
+**Improvements**
+- The hash function is simple and can be improved for performance.
