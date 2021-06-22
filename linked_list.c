@@ -324,8 +324,8 @@ Status list_copyList(NODE hListToCopy, NODE* phNewList) {
 	if (!(*pNewHead = createNode(copyHead->key, copyHead->data)))
 		return FAILURE;
 
-	Node* nodeToCopy = copyHead->next;	// tracks the nodes to be copied
-	Node* newNode;						// holds each new node created
+	Node* nodeToCopy = copyHead->next;		// tracks the nodes to be copied
+	Node* newNode;					// holds each new node created
 	Node* prev = *pNewHead;				// used for tail insert operation
 	while (nodeToCopy != NULL) {
 		if (!(newNode = createNode(nodeToCopy->key, nodeToCopy->data))) {
