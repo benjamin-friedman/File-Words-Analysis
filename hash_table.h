@@ -1,8 +1,8 @@
 /*
    Copyright (C) 2020 Benjamin G. Friedman. Code may be used or redistributed freely with credit given to the author.
    File Description:
-	- name: hash_table.h
-	- description: header file for the hash table interface.
+		- name: hash_table.h
+		- description: header file for the hash table interface.
    Contact: bfriedman12@gmail.com
 */
 
@@ -12,7 +12,7 @@
 #include "status.h"
 #include "linked_list.h"
 
-typedef void* HASH_TABLE;	// opaque object handle
+typedef void* HASH_TABLE;		// opaque object handle
 
 
 /* PRECONDITION: capacity is an integer greater than 0.
@@ -82,5 +82,15 @@ void ht_print(HASH_TABLE hTable, FILE* fp);
    the handle pointed to by phNewList and returns SUCCESS. Returns FAILURE for any memory allocation
    failure. */
 Status ht_createListLTG(HASH_TABLE hTable, NODE* phNewList);
+
+
+/* PRECONDITION: unmodifiedWord is a c-string that is anything other than the empty string.
+   POSTCONDITION: if the word does not need to be modified, it is left unchanged and returned as it.
+   If the word needs to be modified, it is changed and the modified version is returned. If the c-string
+   is a standalone punctuation character, it is changed to the empty string. If the c-string is a word
+   with punctuation characters in it (like word; or word) or word?) then the punctuation characters are
+   removed. The only acceptable puncutation character is the apostrophe: words, word's, and words' are
+   all considered different words. */
+char* modifyWord(char* unmodifiedWord);
 
 #endif
