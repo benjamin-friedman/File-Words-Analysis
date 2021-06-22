@@ -1,8 +1,8 @@
 /*
    Copyright (C) 2020 Benjamin G. Friedman. Code may be used or redistributed freely with credit given to the author.
    File Description:
-		- name: linked_list.h
-		- description: header file for the linked list interface.
+	- name: linked_list.h
+	- description: header file for the linked list interface.
    Contact: bfriedman12@gmail.com
 */
 
@@ -11,7 +11,7 @@
 
 #include "status.h"
 
-typedef void* NODE;
+typedef void* NODE;	// opaque object handle
 
 
 /* PRECONDITION: phList is a pointer to a handle to a linked list that is empty (NULL) or exists.
