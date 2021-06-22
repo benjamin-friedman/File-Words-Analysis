@@ -12,7 +12,7 @@
 #include "status.h"
 #include "linked_list.h"
 
-typedef void* HASH_TABLE;
+typedef void* HASH_TABLE;	// opaque object handle
 
 
 /* PRECONDITION: capacity is an integer greater than 0.
