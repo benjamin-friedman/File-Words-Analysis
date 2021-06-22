@@ -1,8 +1,8 @@
 /*
    Copyright (C) 2020 Benjamin G. Friedman. Code may be used or redistributed freely with credit given to the author.
    File Description:
-	- name: linked_list.h
-	- description: header file for the linked list interface.
+		- name: linked_list.h
+		- description: header file for the linked list interface.
    Contact: bfriedman12@gmail.com
 */
 
@@ -11,20 +11,20 @@
 
 #include "status.h"
 
-typedef void* NODE;	// opaque object handle
+typedef void* NODE;
 
 
 /* PRECONDITION: phList is a pointer to a handle to a linked list that is empty (NULL) or exists.
    POSTCONDITION: inserts new key-data pair the at the head and returns SUCCESS.
    Allows for duplicates. Returns FAILURE for any memory allocation failure. */
-Status listHeadInsert(NODE* phList, char* key, int data);
+Status listHeadInsert(NODE* phList, const char* key, int data);
 
 
 /* PRECONDITION: phList is a pointer to a handle to a linked list that is empty (NULL) or exists. key and data are the
    key-data pair for the hash table element to be inserted.
    POSTCONDITION: inserts a new key-data pair in least-to-greatest lexicographic order and
    returns SUCCESS. Returns FAILURE for any memory allocation failure */
-Status list_LTGInsert(NODE* phList, char* key, int data);
+Status list_LTGInsert(NODE* phList, const char* key, int data);
 
 
 /* PRECONDITION: hNode is a handle to a node that exists in the linked list.
@@ -36,7 +36,7 @@ void list_updateExistingNode(NODE hNode, int data);
    key is the key to be removed.
    POSTCONDITION: if the key was found, its corresponding node is removed and returns SUCCESS.
    If the key does not exist or the list is empty it returns FAILURE. */
-Status list_remove(NODE* phList, char* key);
+Status list_remove(NODE* phList, const char* key);
 
 
 /* PRECONDITION: phList is a pointer to a handle to a linked list that is empty (NULL) or exists.
@@ -56,13 +56,13 @@ Boolean list_isEmpty(NODE hList);
    data in the integer pointed to by pData and returns TRUE. If the key doesn't exist, NULL and 0
    are stored in pFoundNode and the integer pointed to by pData respectively and returns FALSE.
    In either case, if pFoundNode was passed NULL it will be ignored. */
-Boolean list_key_exists(NODE hList, char* key, NODE* pFoundNode, int* pData);
+Boolean list_key_exists(NODE hList, const char* key, NODE* pFoundNode, int* pData);
 
 
 /* PRECONDITION: hList is a handle to a linked list and key is the key to search for.
    POSTCONDITION: if the key is found, its data is stored in the integer pointed to by pData
    and returns FAILURE. */
-Status list_getDataByKey(NODE hList, char* key, int* pData);
+Status list_getDataByKey(NODE hList, const char* key, int* pData);
 
 
 /* PRECONDITION: hList is a handle to a linked list that is empty (NULL) or exists. phListToAddTo
