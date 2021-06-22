@@ -12,8 +12,6 @@
 #include <ctype.h>
 #include "hash_table.h"
 
-// gets rid of uppercase and any non alphabetic characters
-char* modifyWord(char* unmodifiedWord);
 
 int main(int argc, char* argv[]) {
 
@@ -69,50 +67,4 @@ int main(int argc, char* argv[]) {
 	fclose(fpHashTable);
 
 	return 0;
-}
-
-
-
-
-char* modifyWord(char* unmodifiedWord) {
-	unsigned unmodifiedWordLength = strlen(unmodifiedWord);
-	char modifiedWord[100] = { '\0' };
-	unsigned index = 0;
-	char* apostrophe = "'";
-	Boolean needsToBeModified = FALSE;
-
-	// edge case for standalone punctuation (? : ; etc.)
-	if (unmodifiedWordLength == 1 && !isalpha(unmodifiedWord[0])) {
-		unmodifiedWord[0] = '\0';
-		return unmodifiedWord;
-	}
-
-	// check if word needs to be modified. Alphabetic characters and apostrophes are ok.
-	for (unsigned i = 0; i < unmodifiedWordLength; i++) {
-		if (!isalpha(unmodifiedWord[i] && unmodifiedWord[i] != apostrophe[0])) {
-			needsToBeModified = TRUE;
-			break;
-		}
-	}
-	// doesn't need to be modified.
-	if (!needsToBeModified)
-		return unmodifiedWord;
-
-	// needs to be modified. Continue with modification.
-	// copy all alphbaetical characters/apostrophes from unmodified word into modified word
-	for (unsigned i = 0; i < unmodifiedWordLength; i++) {
-		// alphabetic letter
-		if (isalpha(unmodifiedWord[i]))
-			modifiedWord[index++] = tolower(unmodifiedWord[i]);
-		// apostrophes are ok
-		else if (unmodifiedWord[i] == apostrophe[0])
-			modifiedWord[index++] = unmodifiedWord[i];
-	}
-
-
-	for (unsigned i = 0; i < index; i++)
-		unmodifiedWord[i] = modifiedWord[i];
-	unmodifiedWord[index] = '\0';
-
-	return unmodifiedWord;
 }
