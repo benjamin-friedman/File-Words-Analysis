@@ -13,7 +13,7 @@
 
 
 typedef struct hash_table {
-	NODE* hash_table;		  // array of linked lists (chaining)
+	NODE* hash_table;		// array of linked lists (chaining)
 	unsigned capacity;		// capacity of hash table
 } Hash_table;
 
