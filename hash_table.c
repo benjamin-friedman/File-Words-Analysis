@@ -1,14 +1,15 @@
 /*
    Copyright (C) 2020 Benjamin G. Friedman. Code may be used or redistributed freely with credit given to the author.
    File Description:
-	- name: hash_table.c
-	- description: implementation file for the hash table interface.
+		- name: hash_table.c
+		- description: implementation file for the hash table interface.
    Contact: bfriedman12@gmail.com
 */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "hash_table.h"
 
 
@@ -104,9 +105,9 @@ Status ht_getDataByKey(HASH_TABLE hTable, char* key, int* pData) {
 
 void ht_print(HASH_TABLE hTable, FILE* fp) {
 	Hash_table* ht = (Hash_table*)hTable;
-	unsigned occupiedIndexes = 0;	    // the number of occupied indexes in the hash table
-	unsigned totalEntries = 0;		    // the number of entries in the hash table
-	unsigned listSize = 0;			      // the size of a single linked list in the hash table
+	unsigned occupiedIndexes = 0;	// the number of occupied indexes in the hash table
+	unsigned totalEntries = 0;		// the number of entries in the hash table
+	unsigned listSize = 0;			// the size of a single linked list in the hash table
 	for (unsigned i = 0; i < ht->capacity; i++) {
 		fprintf(fp, "Index: %-5d", i);
 		if (ht->hash_table[i] == NULL) {
@@ -161,4 +162,48 @@ Status ht_createListLTG(HASH_TABLE hTable, NODE* phNewList) {
 	}
 
 	return SUCCESS;
+}
+
+
+char* modifyWord(char* unmodifiedWord) {
+	unsigned unmodifiedWordLength = strlen(unmodifiedWord);
+	char modifiedWord[100] = { '\0' };
+	unsigned index = 0;
+	char* apostrophe = "'";
+	Boolean needsToBeModified = FALSE;
+
+	// edge case for standalone punctuation (? : ; etc.)
+	if (unmodifiedWordLength == 1 && !isalpha(unmodifiedWord[0])) {
+		unmodifiedWord[0] = '\0';
+		return unmodifiedWord;
+	}
+
+	// check if word needs to be modified. Alphabetic characters and apostrophes are ok.
+	for (unsigned i = 0; i < unmodifiedWordLength; i++) {
+		if (!isalpha(unmodifiedWord[i] && unmodifiedWord[i] != apostrophe[0])) {
+			needsToBeModified = TRUE;
+			break;
+		}
+	}
+	// doesn't need to be modified.
+	if (!needsToBeModified)
+		return unmodifiedWord;
+
+	// needs to be modified. Continue with modification.
+	// copy all alphbaetical characters/apostrophes from unmodified word into modified word
+	for (unsigned i = 0; i < unmodifiedWordLength; i++) {
+		// alphabetic letter
+		if (isalpha(unmodifiedWord[i]))
+			modifiedWord[index++] = tolower(unmodifiedWord[i]);
+		// apostrophes are ok
+		else if (unmodifiedWord[i] == apostrophe[0])
+			modifiedWord[index++] = unmodifiedWord[i];
+	}
+
+
+	for (unsigned i = 0; i < index; i++)
+		unmodifiedWord[i] = modifiedWord[i];
+	unmodifiedWord[index] = '\0';
+
+	return unmodifiedWord;
 }
