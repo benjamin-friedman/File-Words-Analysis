@@ -14,4 +14,4 @@ Console application written in C to read from any file, count the number of occu
 - output_hash_table.txt - an output file containing the hash table representation in memory as well as a summary of its performance at the bottom of the file.
 
 **Improvements**
-- The hash function is simple and can be improved for performance.
+- The hash function is not good and needs to be improved.
