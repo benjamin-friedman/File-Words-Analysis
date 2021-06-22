@@ -26,7 +26,7 @@ HASH_TABLE ht_create(unsigned capacity);
    POSTCONDITION: inserts the key data pair into the hash table. If the key already exists, the
    previous data will get overriden. Returns SUCCESS in either case. 
    Returns FAILURE for memory allocation failure. */
-Status ht_insert(HASH_TABLE hTable, char* key, int data);
+Status ht_insert(HASH_TABLE hTable, const char* key, int data);
 
 
 /* PRECONDITION: hTable is a handle to a valid hash table, key is a key that already exists in 
@@ -34,13 +34,13 @@ Status ht_insert(HASH_TABLE hTable, char* key, int data);
    where the key exists, and data is the new piece of data. Use ht_key_exists to first ensure the
    key already exists. 
    POSTCONDITION: the data corresponding to the key gets updated. */
-void ht_updateElement(HASH_TABLE hTable, char* key, unsigned index, int data);
+void ht_updateElement(HASH_TABLE hTable, const char* key, unsigned index, int data);
 
 
 /* PRECONDITION: hTable is a handle to a valid hash table, key is the key to be looked for.
    POSTCONDITION: if the key exists, returns SUCCESS and removes the key-data pair.
    Returns FAILURE if the key doesn't exist. */
-Status ht_remove(HASH_TABLE hTable, char* key);
+Status ht_remove(HASH_TABLE hTable, const char* key);
 
 
 /* PRECONDITION: phTable is a pointer to a handle to a hash table.
@@ -51,8 +51,10 @@ void ht_destroy(HASH_TABLE* phTable);
 
 /* PRECONDITION: key is the key to be hashed, capacity is the capacity of the hash table.
    POSTCONDITION: returns an index within the range of the hash table. For example,
-   if the hash table is size 1000 then the index returned is 0 - 999 inclusive. */
-unsigned ht_hash(char* key, unsigned capacity);
+   if the hash table is size 1000 then the index returned is 0 - 999 inclusive. The hash function 
+   used is the same as Java's hashCode() function since it's demonstrated to have relatively good
+   performance. */
+unsigned ht_hash(const char* data, unsigned capacity);
 
 
 /* PRECONDITION: hTable is a handle to a valid hash table, key is the key to be looked for.
@@ -60,14 +62,14 @@ unsigned ht_hash(char* key, unsigned capacity);
    in the integer pointed to by pIndex, its data value in the integer pointed to by pData, and
    returns SUCCESS. If the key doesn't exist, -1 and 0 are stored in the integers pointed to by
    pIndex and pData respectively and returns FALSE. */
-Boolean ht_keyExists(HASH_TABLE hTable, char* key, unsigned* pIndex, int* pData);
+Boolean ht_keyExists(HASH_TABLE hTable, const char* key, unsigned* pIndex, int* pData);
 
 
 /* PRECONDITION: hTable is a handle to a valid hash table, key is the key to be looked for.
    POSTCONDITION: if the key exists, its data value is stored in the integer pointed to by pData
    and returns SUCCESS. If the key doesn't exist, a 0 is stored in the integer pointed to by pData
    and returns FAILURE. */
-Status ht_getDataByKey(HASH_TABLE hTable, char* key, int* pData);
+Status ht_getDataByKey(HASH_TABLE hTable, const char* key, int* pData);
 
 
 /* PRECONDITION: hTable is a handle to a valid hash table. fp is for a file or stdout.
