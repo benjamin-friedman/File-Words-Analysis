@@ -1,8 +1,8 @@
 /*
    Copyright (C) 2020 Benjamin G. Friedman. Code may be used or redistributed freely with credit given to the author.
    File Description:
-- name: main.c
-- description: the main program.
+	- name: main.c
+	- description: the main program.
    Contact: bfriedman12@gmail.com
 */
 
