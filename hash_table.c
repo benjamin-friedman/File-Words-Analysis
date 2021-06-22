@@ -34,14 +34,14 @@ HASH_TABLE ht_create(unsigned capacity) {
 }
 
 
-Status ht_insert(HASH_TABLE hTable, char* key, int data) {
+Status ht_insert(HASH_TABLE hTable, const char* key, int data) {
 	Hash_table* ht = (Hash_table*)hTable;
 	unsigned index = ht_hash(key, ht->capacity);
 	return listHeadInsert(&(ht->hash_table[index]), key, data);
 }
 
 
-void ht_updateElement(HASH_TABLE hTable, char* key, unsigned index, int data) {
+void ht_updateElement(HASH_TABLE hTable, const char* key, unsigned index, int data) {
 	Hash_table* ht = (Hash_table*)hTable;
 	NODE nodeToUpdate = NULL;
 	list_key_exists(ht->hash_table[index], key, &nodeToUpdate, NULL);
@@ -49,7 +49,7 @@ void ht_updateElement(HASH_TABLE hTable, char* key, unsigned index, int data) {
 }
 
 
-Status ht_remove(HASH_TABLE hTable, char* key) {
+Status ht_remove(HASH_TABLE hTable, const char* key) {
 	Hash_table* ht = (Hash_table*)hTable;
 	unsigned index = ht_hash(key, ht->capacity);
 	return list_remove(&(ht->hash_table[index]), key);
@@ -67,16 +67,22 @@ void ht_destroy(HASH_TABLE* phTable) {
 }
 
 
-unsigned ht_hash(char* key, unsigned capacity) {
+unsigned ht_hash(const char* key, unsigned capacity) {
 	unsigned sum = 0;
+	unsigned a = 31;
 	unsigned keyLen = strlen(key);
-	for (unsigned i = 0; i < keyLen; i++)
-		sum += key[i];
+	unsigned partialExp  = 1;
+
+	for (int i = keyLen - 1; i >= 0; i--) {
+		sum += key[i] * partialExp;
+		partialExp *= a;
+	}
+
 	return sum % capacity;
 }
 
 
-Boolean ht_keyExists(HASH_TABLE hTable, char* key, unsigned* pIndex, int* pData) {
+Boolean ht_keyExists(HASH_TABLE hTable, const char* key, unsigned* pIndex, int* pData) {
 	Hash_table* ht = (Hash_table*)hTable;
 	unsigned index = ht_hash(key, ht->capacity);
 	if (ht->hash_table[index] == NULL)
@@ -92,7 +98,7 @@ Boolean ht_keyExists(HASH_TABLE hTable, char* key, unsigned* pIndex, int* pData)
 }
 
 
-Status ht_getDataByKey(HASH_TABLE hTable, char* key, int* pData) {
+Status ht_getDataByKey(HASH_TABLE hTable, const char* key, int* pData) {
 	Hash_table* ht = (Hash_table*)hTable;
 	unsigned index = ht_hash(key, ht->capacity);
 	if (ht->hash_table[index] == NULL) {
@@ -105,7 +111,7 @@ Status ht_getDataByKey(HASH_TABLE hTable, char* key, int* pData) {
 
 void ht_print(HASH_TABLE hTable, FILE* fp) {
 	Hash_table* ht = (Hash_table*)hTable;
-	unsigned occupiedIndexes = 0;	// the number of occupied indexes in the hash table
+	unsigned occupiedIndexes = 0;		// the number of occupied indexes in the hash table
 	unsigned totalEntries = 0;		// the number of entries in the hash table
 	unsigned listSize = 0;			// the size of a single linked list in the hash table
 	for (unsigned i = 0; i < ht->capacity; i++) {
@@ -123,10 +129,12 @@ void ht_print(HASH_TABLE hTable, FILE* fp) {
 	fprintf(fp, "\n\n\nHASH TABLE PERFORMANCE\n\n");
 	fprintf(fp, "%-48s%u\n", "Hash Table Size:", ht->capacity);
 	fprintf(fp, "%-48s%u\n", "Number of Occupied Indexes:", occupiedIndexes);
-	fprintf(fp, "%-48s%u\n\n", "Number of Entries:", totalEntries);
+	fprintf(fp, "%-48s%u\n", "Number of Entries:", totalEntries);
+	fprintf(fp, "%-48s%u\n\n", "Number of Collisions:", totalEntries - occupiedIndexes);
 	fprintf(fp, "%-48s%g%%\n", "Percentage of indexes occupied:", (double)occupiedIndexes / ht->capacity * 100);
 	fprintf(fp, "%-48s%g\n", "Ratio of Total Entries to Hash Table Size:", (double)totalEntries / ht->capacity);
-	fprintf(fp, "%-48s%g\n\n", "Average Number of Entries Per Occupied Index:", (double)totalEntries / occupiedIndexes);
+	fprintf(fp, "%-48s%g\n", "Average Number of Entries Per Occupied Index:", (double)totalEntries / occupiedIndexes);
+	fprintf(fp, "%-48s%g\n\n", "Entries Per Collision:",  (double)totalEntries / (totalEntries - occupiedIndexes));
 }
 
 
