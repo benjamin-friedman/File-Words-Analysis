@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2020 Benjamin G. Friedman. Code may be used or redistributed freely with credit given to the author.
    File Description:
-  	- name: linked_list.c
+	- name: linked_list.c
 	- description: implementation file for the linked list interface.
    Contact: bfriedman12@gmail.com
 */
@@ -13,8 +13,8 @@
 
 
 typedef struct node {
-	int data;				// number of words corresponding to the key
-	char* key;				// key for hash table (i.e. the word)
+	int data;						// number of words corresponding to the key
+	char* key;						// key for hash table (i.e. the word)
 	struct node *previous, *next;
 } Node;
 
@@ -271,16 +271,15 @@ Status list_printHeadToTailOneLine(NODE hList, FILE* fp, unsigned* pListSize) {
 		sprintf_s(buffer, 50, "%s %d", current->key, current->data);
 		fprintf(fp, "%-15s", buffer);
 		count++;
-		if (count == 5) {
+		if (count == 5 && current->next != NULL) {
 			fprintf(fp, "%s", spacing);
 			count = 0;
 		}
 		current = current->next;
 	}
 
+	fprintf(fp, "\n");
 	*pListSize = listSize;
-	if (count != 0)
-		fprintf(fp, "\n");
 	return SUCCESS;
 }
 
@@ -326,8 +325,8 @@ Status list_copyList(NODE hListToCopy, NODE* phNewList) {
 		return FAILURE;
 
 	Node* nodeToCopy = copyHead->next;	// tracks the nodes to be copied
-	Node* newNode;				// holds each new node created
-	Node* prev = *pNewHead;			// used for tail insert operation
+	Node* newNode;						// holds each new node created
+	Node* prev = *pNewHead;				// used for tail insert operation
 	while (nodeToCopy != NULL) {
 		if (!(newNode = createNode(nodeToCopy->key, nodeToCopy->data))) {
 			list_destroy(phNewList);
