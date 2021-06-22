@@ -22,7 +22,7 @@ typedef struct node {
 /* Helper Functions */
 /* PRECONDITION: key and data are the key-data pair for a new node in the linked list.
    POSTCONDITION: returns the newly created node or NULL for any memory allocation failure. */
-Node* createNode(char* key, int data);
+Node* createNode(const char* key, int data);
 
 /* Functions to merge_sort a linked list */
 Node* mergesort(Node* head);
@@ -30,7 +30,7 @@ Node* split(Node* head);
 Node* merge(Node* first, Node* second);
 
 
-Status listHeadInsert(NODE* phList, char* key, int data) {
+Status listHeadInsert(NODE* phList, const char* key, int data) {
 	Node** head = (Node**)phList;
 
 	// Key doesn't already exist. Perform head insertion.
@@ -48,7 +48,7 @@ Status listHeadInsert(NODE* phList, char* key, int data) {
 }
 
 
-Status list_LTGInsert(NODE* phList, char* key, int data) {
+Status list_LTGInsert(NODE* phList, const char* key, int data) {
 	Node** head = (Node**)phList;
 	
 	// create the new node
@@ -117,7 +117,7 @@ void list_updateExistingNode(NODE hNode, int data) {
 }
 
 
-Status list_remove(NODE* phList, char* key) {
+Status list_remove(NODE* phList, const char* key) {
 	Node** head = (Node**)phList;
 
 	// list size 0
@@ -188,7 +188,7 @@ Boolean list_isEmpty(NODE hList) {
 }
 
 
-Boolean list_key_exists(NODE hList, char* key, NODE* pFoundNode, int* pData) {
+Boolean list_key_exists(NODE hList, const char* key, NODE* pFoundNode, int* pData) {
 	Node* head = (Node*)hList;
 	Node** foundNode = (Node**)pFoundNode;
 	Node* current = head;
@@ -212,7 +212,7 @@ Boolean list_key_exists(NODE hList, char* key, NODE* pFoundNode, int* pData) {
 }
 
 
-Status list_getDataByKey(NODE hList, char* key, int* pData) {
+Status list_getDataByKey(NODE hList, const char* key, int* pData) {
 	Node* head = (Node*)hList;
 	Node* current = head;
 	while (current != NULL) {
@@ -363,7 +363,7 @@ void list_destroy(NODE* phList) {
 
 
 /* Helper Functions */
-Node* createNode(char* key, int data) {
+Node* createNode(const char* key, int data) {
 	// create the node
 	Node* newNode = (Node*)malloc(sizeof(*newNode));
 	if (newNode == NULL)
