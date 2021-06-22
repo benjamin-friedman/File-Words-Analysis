@@ -1,8 +1,8 @@
 /*
    Copyright (C) 2020 Benjamin G. Friedman. Code may be used or redistributed freely with credit given to the author.
    File Description:
-		- name: hash_table.c
-		- description: implementation file for the hash table interface.
+	- name: hash_table.c
+	- description: implementation file for the hash table interface.
    Contact: bfriedman12@gmail.com
 */
 
@@ -200,7 +200,7 @@ char* modifyWord(char* unmodifiedWord) {
 			modifiedWord[index++] = unmodifiedWord[i];
 	}
 
-
+	// copy the modified word back into unmodified word
 	for (unsigned i = 0; i < index; i++)
 		unmodifiedWord[i] = modifiedWord[i];
 	unmodifiedWord[index] = '\0';
