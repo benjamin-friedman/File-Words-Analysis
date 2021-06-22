@@ -13,8 +13,8 @@
 
 
 typedef struct node {
-	int data;						// number of words corresponding to the key
-	char* key;						// key for hash table (i.e. the word)
+	int data;					// number of words corresponding to the key
+	char* key;					// key for hash table (i.e. the word)
 	struct node *previous, *next;
 } Node;
 
