@@ -1,15 +1,14 @@
 /*
    Copyright (C) 2020 Benjamin G. Friedman. Code may be used or redistributed freely with credit given to the author.
    File Description:
-	- name: main.c
-	- description: the main program.
+- name: main.c
+- description: the main program.
    Contact: bfriedman12@gmail.com
 */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
 #include "hash_table.h"
 
 
@@ -18,15 +17,15 @@ int main(int argc, char* argv[]) {
 	HASH_TABLE hTable = ht_create(10000);
 
 	FILE* fpIn, *fpOut, *fpHashTable;
-	if (fopen_s(&fpIn, "bible.txt", "r") != 0) {
+	if (fopen_s(&fpIn, "bible.txt", "r")) {
 		printf("Error. Failed to open input file.\n");
 		exit(1);
 	}
-	if (fopen_s(&fpOut, "output.txt", "w") != 0) {
+	if (fopen_s(&fpOut, "output.txt", "w")) {
 		printf("Error. Failed to open output file.\n");
 		exit(2);
 	}
-	if (fopen_s(&fpHashTable, "output_hash_table.txt", "w") != 0) {
+	if (fopen_s(&fpHashTable, "output_hash_table.txt", "w")) {
 		printf("Error. Failed to open hash table output file.\n");
 		exit(3);
 	}
