@@ -268,8 +268,8 @@ Status list_printHeadToTailOneLine(NODE hList, FILE* fp, unsigned* pListSize) {
 	unsigned listSize = 0;
 	while (current != NULL) {
 		listSize++;
-		sprintf_s(buffer, 50, "%s %d", current->key, current->data);
-		fprintf(fp, "%-15s", buffer);
+		sprintf_s(buffer, 100, "%s %d", current->key, current->data);
+		fprintf(fp, "%-22s", buffer);
 		count++;
 		if (count == 5 && current->next != NULL) {
 			fprintf(fp, "%s", spacing);
