@@ -10036,4 +10036,3 @@ Percentage of indexes occupied:                 72.44%
 Ratio of Total Entries to Hash Table Size:      1.2758
 Average Number of Entries Per Occupied Index:   1.76118
 Entries Per Collision:                          2.31375
-
