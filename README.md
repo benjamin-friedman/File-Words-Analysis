@@ -1,5 +1,5 @@
 # File-Word-Counter
-Console application written in C to read from any file, count the number of occurrences of each word in the file, and then output each word in order of least to greatest lexicographic order along with its number of occurrences. The beginning of the output also contains the total number of words and the total number of unique words. The hash table is implemented using separate chaining.
+Console application written in C to read from any file, count the number of occurrences of each word in the file, and then output each word in order of least to greatest lexicographic order along with the number of occurrences. The beginning of the output also contains the total number of words and the total number of unique words. The hash table is implemented using separate chaining.
 
 **Program Files**
 - main.c - main program.
