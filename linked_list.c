@@ -367,11 +367,11 @@ Node* createNode(const char* key, int data) {
 	// create the node
 	Node* newNode = (Node*)malloc(sizeof(*newNode));
 	if (newNode == NULL)
-		return FAILURE;
+		return NULL;
 	unsigned keyLen = strlen(key);
 	if (!(newNode->key = malloc(sizeof(*(newNode->key)) * (keyLen + 1)))) {
 		free(newNode);
-		return FAILURE;
+		return NULL;
 	}
 
 	// copy over the key and data
