@@ -17,15 +17,15 @@ int main(int argc, char* argv[]) {
 	HASH_TABLE hTable = ht_create(10000);
 
 	FILE* fpIn, *fpOut, *fpHashTable;
-	if (fopen_s(&fpIn, "bible.txt", "r")) {
+	if ((fpIn = fopen("bible.txt", "r")) == NULL) {
 		printf("Error. Failed to open input file.\n");
 		exit(1);
 	}
-	if (fopen_s(&fpOut, "output.txt", "w")) {
+	if ((fpOut = fopen("output.txt", "w")) == NULL) {
 		printf("Error. Failed to open output file.\n");
 		exit(2);
 	}
-	if (fopen_s(&fpHashTable, "output_hash_table.txt", "w")) {
+	if ((fpHashTable = fopen("output_hash_table.txt", "w")) == NULL) {
 		printf("Error. Failed to open hash table output file.\n");
 		exit(3);
 	}
@@ -36,7 +36,7 @@ int main(int argc, char* argv[]) {
 	unsigned index;
 	unsigned totalWords = 0;
 	unsigned uniqueWords = 0;
-	while (fscanf_s(fpIn, "%s", word, 100) != EOF) {
+	while (fscanf(fpIn, "%s", word) != EOF) {
 		modifyWord(word);
 		if (strcmp(word, "")) {
 			totalWords++;
@@ -56,7 +56,7 @@ int main(int argc, char* argv[]) {
 	fprintf(fpOut, "%-20s%u\n", "Total words:", totalWords);
 	fprintf(fpOut, "%-20s%u\n\n", "Unique words:", uniqueWords);
 	list_printHeadToTail(list, fpOut);
-	
+
 	ht_print(hTable, fpHashTable);
 
 	ht_destroy(&hTable);
