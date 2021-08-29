@@ -6,7 +6,7 @@ Console application written in C to read from any file, count the number of occu
 - hash_table.h/hash_table.c - hash table interface.
 - linked_list.h/linked_list.c - linked list interface used for the hash table separate chaining and storing all the words into one list for output.
 - status.h - header file for Boolean and Status enumerated types.
-- Makefile - so that the program can be run with the command line. In this case, main.c could be modified so that the input and output file names are entered into argv[1] and argv[2] respectively instead of being hardcoded into main.
+- Makefile - so that the program can be run with the command line in Linux.
 
 **Input and Output Files**
 - bible.txt - the input file. The entire bible as a text file.
