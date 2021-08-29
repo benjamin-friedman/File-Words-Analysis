@@ -3,6 +3,7 @@ Console application written in C to read from any file, count the number of occu
 
 Video Demo: https://www.youtube.com/watch?v=UB65W-8PRIs
 
+
 **Program Files**
 - main.c - main program.
 - hash_table.h/hash_table.c - hash table interface.
