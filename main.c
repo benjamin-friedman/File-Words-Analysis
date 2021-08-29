@@ -17,15 +17,15 @@ int main(int argc, char* argv[]) {
 	HASH_TABLE hTable = ht_create(10000);
 
 	FILE* fpIn, *fpOut, *fpHashTable;
-	if ((fpIn = fopen("bible.txt", "r")) == NULL) {
+	if ((fpIn = fopen(argv[1], "r")) == NULL) {
 		printf("Error. Failed to open input file.\n");
 		exit(1);
 	}
-	if ((fpOut = fopen("output.txt", "w")) == NULL) {
+	if ((fpOut = fopen(argv[2], "w")) == NULL) {
 		printf("Error. Failed to open output file.\n");
 		exit(2);
 	}
-	if ((fpHashTable = fopen("output_hash_table.txt", "w")) == NULL) {
+	if ((fpHashTable = fopen(argv[3], "w")) == NULL) {
 		printf("Error. Failed to open hash table output file.\n");
 		exit(3);
 	}
