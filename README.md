@@ -1,5 +1,5 @@
 # File-Words-Analysis
-Console application written in C to read from any file, count the number of occurrences of each word, and then output each word in order of least to greatest lexicographic order along with the number of occurrences. The beginning of the output also contains the total number of words and the total number of unique words. The program is done using a hash table with separate chaining, and a second output file shows the contents of the hash table as well as a summary of its performance.
+Console application written in C to read from any file, count the number of occurrences of each word, and then output each word in order of least to greatest lexicographic order along with the number of occurrences. The beginning of the output also contains the total number of words and the total number of unique words. The program is done using a hash table with separate chaining, and a second output file shows the contents of the hash table as well as a summary of its performance. To demonstrate the program's capabilities, a text file containing the entire bible was used since it's a very long book.
 
 **Video Demo:** https://www.youtube.com/watch?v=TBvGG6ZlTWU
 
