@@ -3,7 +3,6 @@
    File Description:
 	- name: hash_table.c
 	- description: implementation file for the hash table interface.
-   Contact: bfriedman12@gmail.com
 */
 
 #include <stdio.h>
