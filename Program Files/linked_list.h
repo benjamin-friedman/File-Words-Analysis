@@ -3,7 +3,6 @@
    File Description:
 	- name: linked_list.h
 	- description: header file for the linked list interface.
-   Contact: bfriedman12@gmail.com
 */
 
 #ifndef LINKED_LIST_H
