@@ -3,7 +3,6 @@
    File Description:
 	- name: main.c
 	- description: the main program.
-   Contact: bfriedman12@gmail.com
 */
 
 #include <stdio.h>
