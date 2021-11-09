@@ -3,7 +3,6 @@
    File Description:
 	- name: linked_list.c
 	- description: implementation file for the linked list interface.
-   Contact: bfriedman12@gmail.com
 */
 
 #include <stdio.h>
