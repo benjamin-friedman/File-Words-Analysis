@@ -3,7 +3,6 @@
    File Description:
 	- name: hash_table.h
 	- description: header file for the hash table interface.
-   Contact: bfriedman12@gmail.com
 */
 
 #ifndef HASH_TABLE_H
