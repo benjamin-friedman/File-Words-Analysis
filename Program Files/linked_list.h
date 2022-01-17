@@ -1,14 +1,17 @@
 /*
-   Copyright (C) 2020 Benjamin G. Friedman. Code may be used or redistributed freely with credit given to the author.
-   File Description:
-	- name: linked_list.h
-	- description: header file for the linked list interface.
+  Copyright (C) 2020 Benjamin G. Friedman
+  File Description:
+      - Name: linked_list.h
+      - Description: header file for the linked list interface.
 */
+
 
 #ifndef LINKED_LIST_H
 #define LINKED_LIST_H
 
+
 #include "status.h"
+
 
 typedef void* NODE;
 
