@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2020 Benjamin G. Friedman. Code may be used or redistributed freely with credit given to the author.
+   Copyright (C) 2020 Benjamin G. Friedman
    File Description:
 	- name: hash_table.c
 	- description: implementation file for the hash table interface.
