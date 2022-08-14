@@ -96,11 +96,11 @@ Status linkedListCombineLTG(LINKED_LIST hLinkedList, LINKED_LIST hLinkedListToAd
 
 /*
 PRECONDITION
-    - hLinkedList is a handle to a valid linked list.
+  - hLinkedList is a handle to a valid linked list.
 POSTCONDITION:
-    - Prints the list from head to tail with each item on its own line
-         key: data
-   - If empty, prints EMPTY LIST.
+  - Prints the list from head to tail with each item on its own line
+        key: data
+  - If empty, prints EMPTY LIST.
 */
 void linkedListPrintHeadToTailMultiplelines(LINKED_LIST hLinkedList, FILE* fp);
 
@@ -108,10 +108,8 @@ void linkedListPrintHeadToTailMultiplelines(LINKED_LIST hLinkedList, FILE* fp);
 PRECONDITION
     - hLinkedList is a handle to a valid linked list.
 POSTCONDITION:
-    - Prints the list from head to tail with each list on a single line unless there
-      are too many words to fit on a single line.
-         key: data
-   - If empty, prints EMPTY.
+  - Prints the list from head to tail with each list on a single line unless there
+    are too many words to fit on a single line.
 */
 void linkedListPrintHeadToTailSingleLine(LINKED_LIST hLinkedList, FILE* fp);
 
@@ -136,9 +134,9 @@ Boolean linkedListIsEmpty(LINKED_LIST hLinkedList);
 
 /*
 PRECONDITION:
-    - phLinkedList is a pointer to a handle to a valid linked list.
+  - phLinkedList is a pointer to a handle to a valid linked list.
 POSTCONDITION:
-    - Frees up all memory associated with the linked list and sets the handle to NULL.
+  - Frees up all memory associated with the linked list and sets the handle to NULL.
 */
 void linkedListDestroy(LINKED_LIST* phLinkedList);
 
