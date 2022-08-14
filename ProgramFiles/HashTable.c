@@ -30,7 +30,7 @@ PRECONDITION
 POSTCONDITION
   - Returns an index within the range of the hash table.
   - The hash function used is the same as Java's hashCode() function since it's demonstrated to have relatively good
-	performance.
+    performance.
 */
 static size_t hash(const char* key, size_t capacity);
 
