@@ -1,6 +1,6 @@
 /*
   Author: Benjamin G. Friedman
-  Date: 08/11/22
+  Date: 08/11/2022
   File: Status.h
   Description:
       - Header file for the Status and Boolean enumerated types.
