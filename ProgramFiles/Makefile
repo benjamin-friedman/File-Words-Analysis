@@ -1,5 +1,5 @@
 # Author: Benjamin G. Friedman
-# Date: 08/11/22
+# Date: 08/11/2022
 # File: Makefile
 # Description: Makefile for the file words analysis program.
 
