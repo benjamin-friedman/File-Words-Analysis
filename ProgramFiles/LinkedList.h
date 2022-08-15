@@ -1,6 +1,6 @@
 /*
   Author: Benjamin G. Friedman
-  Date: 08/14/22
+  Date: 08/11/2022
   File: LinkedList.h
   Description:
       - Header file for the linked list interface.
