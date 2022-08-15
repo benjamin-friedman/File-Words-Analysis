@@ -1,6 +1,6 @@
 /*
   Author: Benjamin G. Friedman
-  Date: 12/25/20
+  Date: 08/14/22
   File: Main.c
   Description:
 	  - The main function for the file words analysis program.
