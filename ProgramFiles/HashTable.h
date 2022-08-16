@@ -16,6 +16,9 @@
 typedef void* HASH_TABLE;        // opaque object handle
 
 
+
+
+/***** Functions defined in HashTable.c *****/
 /*
 PRECONDITION
   - capacity is an integer greater than 0.
