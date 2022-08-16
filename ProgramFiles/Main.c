@@ -14,10 +14,13 @@
 #include "HashTable.h"
 
 
+/***** Macros *****/
 #define HASH_TABLE_CAPACITY 10000
 
 
-/**** Helper functions ****/
+
+
+/***** Functions declared/defined in this file *****/
 // validates the command line arguments - terminates program if anything is invalid
 void validateCLA(int argc, const char* argv[]);
 
@@ -98,7 +101,7 @@ int main(int argc, const char* argv[]) {
 
 
 
-/**** Helper functions ****/
+/***** Functions declared/defined in this file *****/
 void validateCLA(int argc, const char* argv[]) {
 	// 3 CLA
 	if (argc != 4) {
@@ -119,6 +122,7 @@ void validateCLA(int argc, const char* argv[]) {
 		}
 	}
 }
+
 
 
 void openFileByNameAndMode(FILE** pfp, const char* fileName, const char* mode) {
