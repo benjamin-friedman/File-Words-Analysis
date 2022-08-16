@@ -14,6 +14,7 @@
 #include "HashTable.h"
 
 
+/***** Structures *****/
 typedef struct hash_table {
 	LINKED_LIST* linkedLists;    // array of linked lists (chaining)
 	size_t capacity;             // capacity of hash table
@@ -22,7 +23,7 @@ typedef struct hash_table {
 
 
 
-/***** Helper functions *****/
+/***** Helper functions used only in this file *****/
 /*
 PRECONDITION
   - key is the key to be hashed.
@@ -37,6 +38,7 @@ static size_t hash(const char* key, size_t capacity);
 
 
 
+/***** Functions declared in HashTable.h *****/
 HASH_TABLE hashTableInitWithCapacity(size_t capacity) {
 	Hash_table* pHash_table = malloc(sizeof(*pHash_table));
 	if (pHash_table) {
@@ -60,6 +62,7 @@ HASH_TABLE hashTableInitWithCapacity(size_t capacity) {
 }
 
 
+
 Status hashTableInsert(HASH_TABLE hHashTable, const char* key, int data) {
 	Hash_table* pHashTable = hHashTable;
 
@@ -76,10 +79,12 @@ Status hashTableInsert(HASH_TABLE hHashTable, const char* key, int data) {
 }
 
 
+
 Boolean hashTableKeyExists(HASH_TABLE hHashTable, const char* key) {
 	Hash_table* pHashTable = hHashTable;
 	return linkedListKeyExists(pHashTable->linkedLists[hash(key, pHashTable->capacity)], key);
 }
+
 
 
 int hashTablGetDataOfKey(HASH_TABLE hHashTable, const char* key, Status* pStatus) {
@@ -98,10 +103,12 @@ int hashTablGetDataOfKey(HASH_TABLE hHashTable, const char* key, Status* pStatus
 }
 
 
+
 Status hashTableGetCapacity(HASH_TABLE hHashTable) {
 	Hash_table* pHashTable = hHashTable;
 	return pHashTable->capacity;
 }
+
 
 
 Status hashTableCreateLinkedListLTG(HASH_TABLE hHashTable, LINKED_LIST hLinkedList) {
@@ -124,6 +131,7 @@ Status hashTableCreateLinkedListLTG(HASH_TABLE hHashTable, LINKED_LIST hLinkedLi
 
 	return SUCCESS;
 }
+
 
 
 void hashTablePrint(HASH_TABLE hHashTable, FILE* fp) {
@@ -151,6 +159,7 @@ void hashTablePrint(HASH_TABLE hHashTable, FILE* fp) {
 	else
 		fprintf(fp, "%-48s0", "Entries Per Collision:");
 }
+
 
 
 char* hashTablemodifyWord(char* unmodifiedWord) {
@@ -197,6 +206,7 @@ char* hashTablemodifyWord(char* unmodifiedWord) {
 }
 
 
+
 void hashTableDestroy(HASH_TABLE* phHashTable) {
 	Hash_table* pHashTable = *phHashTable;
 	for (size_t i = 0; i < pHashTable->capacity; ++i)
@@ -209,7 +219,7 @@ void hashTableDestroy(HASH_TABLE* phHashTable) {
 
 
 
-/***** Helper functions *****/
+/***** Helper functions used only in this file *****/
 static size_t hash(const char* key, size_t capacity) {
 	unsigned sum = 0;
 	unsigned a = 31;
