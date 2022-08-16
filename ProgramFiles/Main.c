@@ -103,7 +103,7 @@ int main(int argc, const char* argv[]) {
 
 /***** Functions declared/defined in this file *****/
 void validateCLA(int argc, const char* argv[]) {
-	// 3 CLA
+	// 4 CLA
 	if (argc != 4) {
 		printf("Error. Expected 3 command line arguments but got %d\n", argc);
 		printf("Correct arguments - ./FileWordsAnalysis [input file] [word counter file] [hash table output file]\n");
