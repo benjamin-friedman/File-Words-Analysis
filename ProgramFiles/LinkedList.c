@@ -13,6 +13,7 @@
 #include "LinkedList.h"
 
 
+/***** Structures *****/
 typedef struct node {
 	int data;             // number of words corresponding to the key
 	char* key;            // key for hash table (i.e. the word)
@@ -30,7 +31,7 @@ typedef struct linkedList {
 
 
 
-/***** Helper Functions *****/
+/***** Helper functions use only in this file *****/
 /*
 PRECONDITION
   - key and data are the key-data pair for a new node in the linked list.
@@ -42,6 +43,7 @@ static Node* createNode(const char* key, int data);
 
 
 
+/***** Functions declared in LinkedList.h *****/
 LINKED_LIST linkedListInitDefault(void) {
 	LinkedList* pLinkedList = malloc(sizeof(*pLinkedList));
 	if (pLinkedList) {
@@ -50,6 +52,7 @@ LINKED_LIST linkedListInitDefault(void) {
 	}
 	return pLinkedList;
 }
+
 
 
 Status linkedListHeadInsert(LINKED_LIST hLinkedList, const char* key, int data) {
@@ -71,6 +74,7 @@ Status linkedListHeadInsert(LINKED_LIST hLinkedList, const char* key, int data) 
 
 	return SUCCESS;
 }
+
 
 
 Status linkedListInsertLTG(LINKED_LIST hLinkedList, const char* key, int data) {
@@ -122,6 +126,7 @@ Status linkedListInsertLTG(LINKED_LIST hLinkedList, const char* key, int data) {
 }
 
 
+
 Boolean linkedListKeyExists(LINKED_LIST hLinkedList, const char* key) {
 	LinkedList* pLinkedList = hLinkedList;
 	Node* cur = pLinkedList->head;
@@ -134,6 +139,7 @@ Boolean linkedListKeyExists(LINKED_LIST hLinkedList, const char* key) {
 
 	return FALSE;
 }
+
 
 
 Status linkedListUpdateExistingKey(LINKED_LIST hLinkedList, const char* key, int data) {
@@ -155,6 +161,7 @@ Status linkedListUpdateExistingKey(LINKED_LIST hLinkedList, const char* key, int
 }
 
 
+
 int linkedListGetDataOfKey(LINKED_LIST hLinkedList, const char* key, Status* pStatus) {
 	LinkedList* pLinkedList = hLinkedList;
 	Node* cur = pLinkedList->head;
@@ -174,6 +181,7 @@ int linkedListGetDataOfKey(LINKED_LIST hLinkedList, const char* key, Status* pSt
 }
 
 
+
 Status linkedListCombineLTG(LINKED_LIST hLinkedList, LINKED_LIST hLinkedListToAdd) {
 	LinkedList* pLinkedListToAdd = hLinkedListToAdd;
 	Node* curLinkedListToAdd = pLinkedListToAdd->head;
@@ -188,6 +196,7 @@ Status linkedListCombineLTG(LINKED_LIST hLinkedList, LINKED_LIST hLinkedListToAd
 }
 
 
+
 void linkedListPrintHeadToTailMultiplelines(LINKED_LIST hLinkedList, FILE* fp) {
 	LinkedList* pLinkedList = hLinkedList;
 	Node* cur = pLinkedList->head;
@@ -200,6 +209,7 @@ void linkedListPrintHeadToTailMultiplelines(LINKED_LIST hLinkedList, FILE* fp) {
 		cur = cur->next;
 	}
 }
+
 
 
 void linkedListPrintHeadToTailSingleLine(LINKED_LIST hLinkedList, FILE* fp) {
@@ -223,16 +233,19 @@ void linkedListPrintHeadToTailSingleLine(LINKED_LIST hLinkedList, FILE* fp) {
 }
 
 
+
 size_t linkedListGetSize(LINKED_LIST hLinkedList) {
 	LinkedList* pList = hLinkedList;
 	return pList->size;
 }
 
 
+
 Boolean linkedListIsEmpty(LINKED_LIST hLinkedList) {
 	LinkedList* pList = hLinkedList;
 	return pList->head == NULL;
 }
+
 
 
 void linkedListDestroy(LINKED_LIST* phLinkedList) {
@@ -254,7 +267,7 @@ void linkedListDestroy(LINKED_LIST* phLinkedList) {
 
 
 
-/***** Helper Functions *****/
+/***** Helper functions used only in this file *****/
 static Node* createNode(const char* key, int data) {
 	// create the node
 	Node* newNode = (Node*)malloc(sizeof(*newNode));
