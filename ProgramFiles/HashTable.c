@@ -226,7 +226,7 @@ static size_t hash(const char* key, size_t capacity) {
 	size_t keyLen = strlen(key);
 	unsigned partialExp = 1;
 
-	for (int i = keyLen - 1; i >= 0; i--) {
+	for (int i = keyLen - 1; i >= 0; --i) {
 		sum += key[i] * partialExp;
 		partialExp *= a;
 	}

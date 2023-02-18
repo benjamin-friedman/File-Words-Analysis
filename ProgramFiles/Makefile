@@ -5,7 +5,7 @@
 
 
 CC = gcc
-CFLAGS = -std=c99 -Wall -Wextra -Wpedantic #-Og -g -fsanitize=undefined
+CFLAGS = -std=c11 -Wall -Wextra -Wpedantic #-Og -g -fsanitize=undefined
 LDLIBS =
 EXE1 = FileWordsAnalysis
 OBJ1 = Main.o HashTable.o LinkedList.o

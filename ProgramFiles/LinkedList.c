@@ -280,7 +280,7 @@ static Node* createNode(const char* key, int data) {
 	}
 
 	// copy over the key and data
-	for (unsigned i = 0; i < keyLen; i++)
+	for (size_t i = 0; i < keyLen; ++i)
 		newNode->key[i] = key[i];
 	newNode->key[keyLen] = '\0';
 	newNode->data = data;
